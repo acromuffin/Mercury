@@ -127,7 +127,7 @@ public class CursorBoard extends JPanel implements ActionListener{
 		int drd = (int)dr.toMillis() / 1000;
 		int luck = rand.nextInt(100);
 		if(luck > 99-drd*0.6-2) {
-			reds.add(new RedCursor(rand.nextInt(WINDOW_WIDTH),0));
+			reds.add(new RedCursor(rand.nextInt(WINDOW_WIDTH),-50));
 		}
 	}
 	
@@ -157,7 +157,7 @@ public class CursorBoard extends JPanel implements ActionListener{
 	private int getScore() {
 		Duration dr = Duration.between(timestart,timeend);
 		double dri = dr.toMillis();
-		int score = (int)(Math.pow(10, -dri*dri/300_000_000.0 + dri/3750.0));
+		int score = (int)(Math.pow(10, (-1000+Math.sqrt(1000000+4000*dri))/2000.0));
 		return score;
 	}
 	
