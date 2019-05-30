@@ -29,6 +29,7 @@ public class CursorBoard extends JPanel implements ActionListener{
 
 	private Cursor cursor;
 	private Timer timer;
+	private Thron thron;
 	private boolean inGame = true;
 	private List<RedCursor> reds;
 	private LocalTime timestart;
@@ -42,7 +43,6 @@ public class CursorBoard extends JPanel implements ActionListener{
 		this.addKeyListener(new KLi());
 		this.setPreferredSize(new Dimension(WINDOW_WIDTH,WINDOW_HEIGHT));
 		this.setBackground(Color.BLACK);
-		cursor = new Cursor(WINDOW_WIDTH,WINDOW_HEIGHT);
 		this.setFocusable(true);
 		
 		
@@ -54,6 +54,7 @@ public class CursorBoard extends JPanel implements ActionListener{
 	}
 	
 	private void initGame() {
+		thron = new Thron(WINDOW_WIDTH,WINDOW_HEIGHT);
 		reds = new ArrayList<>();
 		cursor = new Cursor(WINDOW_WIDTH,WINDOW_HEIGHT);
 	}
@@ -86,6 +87,7 @@ public class CursorBoard extends JPanel implements ActionListener{
 				g.drawImage(rc.getImage(), rc.getX(), rc.getY(), this);
 			}
 		}
+		g.drawImage(thron.getImage(),thron.getX(),thron.getY(),this);
 	}
 	
 	private void drawGameOver(Graphics g) {
@@ -145,11 +147,16 @@ public class CursorBoard extends JPanel implements ActionListener{
 	
 	private void checkCrash() {
 		Rectangle rg = cursor.getBox();
+		Rectangle rt = thron.getBox();
+		if(rt.intersects(rg)) {
+			endGame();
+			return;
+		}
 		for(RedCursor red : reds) {
 			Rectangle rr = red.getBox();
 			if(rr.intersects(rg)) {
 				endGame();
-				break;
+				return;
 			}
 		}
 	}
@@ -165,7 +172,6 @@ public class CursorBoard extends JPanel implements ActionListener{
 
 		@Override
 		public void keyTyped(KeyEvent e) {
-			// TODO Auto-generated method stub
 			
 		}
 
