@@ -4,8 +4,10 @@ import java.awt.event.KeyEvent;
 import java.net.URL;
 
 public class Cursor extends Sprite{
-	private int dx;
-	private int dy;
+	private int dup;
+	private int ddown;
+	private int dleft;
+	private int dright;
 	private int delta = 4;
 	private final int WINDOW_WIDTH;
 	private final int WINDOW_HEIGHT;
@@ -16,14 +18,18 @@ public class Cursor extends Sprite{
 		setImage(url);
 		WINDOW_WIDTH = width;
 		WINDOW_HEIGHT = height;
-		dy=1;
+		ddown=1;
 	}
 
 	public void move() {
-		if(x>delta&& dx<0) x += dx;
-		else if(x<WINDOW_WIDTH-width/2-delta && dx>0) x+=dx;
-		if(y>delta && dy<0) y += dy;
-		else if(y<WINDOW_HEIGHT-height+delta && dy>0) y+=dy;
+		if(dleft-dright!=0) {
+			if(x>delta&& dleft>0) x -= dleft;
+			else if(x<WINDOW_WIDTH-width/2-delta && dright>0) x += dright;
+		}
+		if(dup-ddown!=0) {
+			if(y>delta && dup>0) y -= dup;
+			else if(y<WINDOW_HEIGHT-height+delta && ddown>0) y+=ddown;
+		}
 	}
 	
     public void keyPressed(KeyEvent e) {
@@ -31,19 +37,19 @@ public class Cursor extends Sprite{
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {
-            dx = -delta;
+            dleft = delta;
         }
 
         if (key == KeyEvent.VK_RIGHT) {
-            dx = delta;
+            dright = delta;
         }
 
         if (key == KeyEvent.VK_UP) {
-            dy = -delta;
+            dup = delta;
         }
 
         if (key == KeyEvent.VK_DOWN) {
-            dy = delta;
+            ddown = delta;
         }
     }
 
@@ -52,19 +58,19 @@ public class Cursor extends Sprite{
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {
-            dx = 0;
+            dleft = 0;
         }
 
         if (key == KeyEvent.VK_RIGHT) {
-            dx = 0;
+            dright = 0;
         }
 
         if (key == KeyEvent.VK_UP) {
-            dy = 1;
+            dup = 0;
         }
 
         if (key == KeyEvent.VK_DOWN) {
-            dy = 1;
+            ddown = 1;
         }
     }
 }
