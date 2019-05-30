@@ -1,5 +1,7 @@
 package application;
 
+import java.net.URL;
+
 public class RedCursor extends Sprite {
 	
 	private int delta=10;
@@ -7,7 +9,8 @@ public class RedCursor extends Sprite {
 
 	public RedCursor(int x, int y) {
 		super(x, y);
-		setImage("src/images/redcursor_40px.png");
+		URL url = this.getClass().getResource("/images/redcursor_40px.png");
+		setImage(url);
 	}
 	
 	public void move() {

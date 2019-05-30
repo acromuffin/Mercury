@@ -1,6 +1,7 @@
 package application;
 
 import java.awt.event.KeyEvent;
+import java.net.URL;
 
 public class Cursor extends Sprite{
 	private int dx;
@@ -11,7 +12,8 @@ public class Cursor extends Sprite{
 	
 	public Cursor(int width,int height) {
 		super(width/2,height-150);
-		setImage("src/images/cursor_20px.png");
+		URL url = this.getClass().getResource("/images/cursor_20px.png");
+		setImage(url);
 		WINDOW_WIDTH = width;
 		WINDOW_HEIGHT = height;
 		dy=1;

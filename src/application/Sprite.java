@@ -2,6 +2,7 @@ package application;
 
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.net.URL;
 
 import javax.swing.ImageIcon;
 
@@ -19,7 +20,7 @@ public class Sprite {
 		visible = true;
 	}
 	
-	public void setImage(String url) {
+	public void setImage(URL url) {
 		ImageIcon ii = new ImageIcon(url);
 		img = ii.getImage();
 		setImageSize();
