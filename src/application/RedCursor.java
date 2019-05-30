@@ -3,6 +3,7 @@ package application;
 public class RedCursor extends Sprite {
 	
 	private int delta=10;
+	private final int WINDOW_HEIGHT = 600;
 
 	public RedCursor(int x, int y) {
 		super(x, y);
@@ -11,6 +12,7 @@ public class RedCursor extends Sprite {
 	
 	public void move() {
 		y+=delta;
+		if(y>WINDOW_HEIGHT) this.visible=false;
 	}
 
 }
