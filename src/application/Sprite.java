@@ -7,6 +7,10 @@ import java.net.URL;
 import javax.swing.ImageIcon;
 
 public class Sprite {
+	
+	protected final int WINDOW_WIDTH = 400;
+	protected final int WINDOW_HEIGHT = 600;
+	
 	protected int x;
 	protected int y;
 	protected int width;

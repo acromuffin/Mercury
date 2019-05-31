@@ -5,7 +5,6 @@ import java.net.URL;
 public class RedCursor extends Sprite {
 	
 	private int delta=10;
-	private final int WINDOW_HEIGHT = 600;
 
 	public RedCursor(int x, int y) {
 		super(x, y);
