@@ -129,7 +129,7 @@ public class CursorBoard extends JPanel implements ActionListener{
 		int drd = (int)dr.toMillis() / 1000;
 		int luck = rand.nextInt(100);
 		if(luck > 99-drd*0.6-2) {
-			reds.add(new RedCursor(rand.nextInt(WINDOW_WIDTH),-50));
+			reds.add(new RedCursorv2(rand.nextInt(WINDOW_WIDTH),-50));
 		}
 	}
 	

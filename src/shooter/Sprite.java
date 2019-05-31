@@ -1,4 +1,4 @@
-package application;
+package shooter;
 
 import java.awt.Image;
 import java.awt.Rectangle;
@@ -8,8 +8,8 @@ import javax.swing.ImageIcon;
 
 public class Sprite {
 	
-	protected final static int WINDOW_WIDTH = 400;
-	protected final static int WINDOW_HEIGHT = 600;
+	protected final int WINDOW_WIDTH = 400;
+	protected final int WINDOW_HEIGHT = 600;
 	
 	protected int x;
 	protected int y;
